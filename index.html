@@ -8,51 +8,57 @@
     <script src="scripts/madLibs.js"></script>
   </head>
   <body ng-app="madLibsApp">
-    <header>
-      <img src="images/mad-lib-happy-face.png" alt="happy">
+    <header class="clearfix">
+      <div class="header-left">
+        <img src="images/mad-lib-happy-face.png" alt="happy">
+      </div>
       <div class="header-right">
-        Automate This!
+        <h1>Automate This!</h1>
       </div>
     </header>
     <div ng-controller="myCtrl">
-      <form action="" class="words">
-        <p>Provide the following words:</p>
-        <ul>
-          <li>
-            <input type="text" ng-model="words[0].femaleName"placeholder="female name" name="female_name" class="female_name">
-          </li>
-          <li>
-            <input type="text" ng-model="words[0].dirtyTask" placeholder="dirty task" name="dirty_task" class="dirty_task">
-          </li>
-          <li>
-            <input type="text" ng-model="words[0].obnoxiousCelebrity" placeholder="obnoxious celebrity" name="obnoxious_celebrity" class="obnoxious_celebrity">
-          </li>
-          <li>
-            <input type="text" ng-model="words[0].jobTitle" placeholder="job title" name="job_title" class="job_title">
-          </li>
-          <li>
-            <input type="text" ng-model="words[0].celebrity" placeholder="celebrity" name="celebrity" class="celebrity">
-          </li>
-          <li>
-            <input type="text" ng-model="words[0].hugeNumber" placeholder="huge number" name="huge_number" class="huge_number">
-          </li>
-          <li>
-            <input type="text" ng-model="words[0].tediousTask" placeholder="tedious task" name="tedious_task" class="tedious_task">
-          </li>
-          <li>
-            <input type="text" ng-model="words[0].uselessSkill" placeholder="useless skill" name="useless_skill" class="useless_skill">
-          </li>
-          <li>
-            <input type="text" ng-model="words[0].adjective" placeholder="adjective" name="adjective" class="adjective">
-          </li>
-        </ul>
-      </form>
-      <p class="result">
-        <em>{{words[0].femaleName}}</em> was a <em>{{words[0].jobTitle}}</em> who loved technology. Although she loved parts of her job, she absolutely hated <em>{{words[0].tediousTask}}</em> and <em>{{words[0].dirtyTask}}</em>. So, <em>{{words[0].femaleName}}</em> met with her life mentor <em>{{words[0].celebrity}}</em> who told her to learn how to <em>{{words[0].uselessSkill}}</em> with Thinkful. Thinkful didn't offer a course on <em>{{words[0].uselessSkill}}</em> so she studied programming instead.
-      </p> 
-      <p class="result">
-        What a great decision! With her new skills, <em>{{words[0].femaleName}}</em> built a(n) <em>{{words[0].adjective}}</em> robot named <em>{{words[0].obnoxiousCelebrity}}</em> that not only loved <em>{{words[0].dirtyTask}}</em> but did it <em>{{words[0].hugeNumber}}</em> times faster.
-      </p>
+      <section class="words">
+        <form action="" method="post">
+          <h2>Provide the following words:</h2>
+          <ul class="clearfix">
+            <li>
+              <input type="text" ng-model="words[0].femaleName"placeholder="female name" name="female_name" class="female_name">
+            </li>
+            <li>
+              <input type="text" ng-model="words[0].dirtyTask" placeholder="dirty task" name="dirty_task" class="dirty_task">
+            </li>
+            <li>
+              <input type="text" ng-model="words[0].obnoxiousCelebrity" placeholder="obnoxious celebrity" name="obnoxious_celebrity" class="obnoxious_celebrity">
+            </li>
+            <li>
+              <input type="text" ng-model="words[0].jobTitle" placeholder="job title" name="job_title" class="job_title">
+            </li>
+            <li>
+              <input type="text" ng-model="words[0].celebrity" placeholder="celebrity" name="celebrity" class="celebrity">
+            </li>
+            <li>
+              <input type="text" ng-model="words[0].hugeNumber" placeholder="huge number" name="huge_number" class="huge_number">
+            </li>
+            <li>
+              <input type="text" ng-model="words[0].tediousTask" placeholder="tedious task" name="tedious_task" class="tedious_task">
+            </li>
+            <li>
+              <input type="text" ng-model="words[0].uselessSkill" placeholder="useless skill" name="useless_skill" class="useless_skill">
+            </li>
+            <li>
+              <input type="text" ng-model="words[0].adjective" placeholder="adjective" name="adjective" class="adjective">
+            </li>
+          </ul>
+        </form>
+      </section>
+      <section class="result">
+        <p>
+          <em>{{words[0].femaleName}}</em> was a <em>{{words[0].jobTitle}}</em> who loved technology. Although she loved parts of her job, she absolutely hated <em>{{words[0].tediousTask}}</em> and <em>{{words[0].dirtyTask}}</em>. So, <em>{{words[0].femaleName}}</em> met with her life mentor <em>{{words[0].celebrity}}</em> who told her to learn how to <em>{{words[0].uselessSkill}}</em> with Thinkful. Thinkful didn't offer a course on <em>{{words[0].uselessSkill}}</em> so she studied programming instead.
+        </p> 
+        <p>
+          What a great decision! With her new skills, <em>{{words[0].femaleName}}</em> built a(n) <em>{{words[0].adjective}}</em> robot named <em>{{words[0].obnoxiousCelebrity}}</em> that not only loved <em>{{words[0].dirtyTask}}</em> but did it <em>{{words[0].hugeNumber}}</em> times faster.
+        </p>
+      </section>
     </div>
   </body>
 </html>
