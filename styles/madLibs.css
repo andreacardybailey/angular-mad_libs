@@ -1,0 +1,5 @@
+.result em {
+  border-bottom: 1px solid #000;
+  min-width: 20px;
+  display: inline-block;
+}
