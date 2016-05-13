@@ -1,6 +1,6 @@
 angular.module('madLibsApp', [])
 .controller('myCtrl', ['$scope', function($scope) {
-  $scope.words = [
+  $scope.words = 
     {
       "femaleName": "",
       "dirtyTask": "",
@@ -11,6 +11,5 @@ angular.module('madLibsApp', [])
       "tediousTask": "",
       "uselessSkill": "",
       "adjective": ""
-    }
-  ];
+    };
 }]);
