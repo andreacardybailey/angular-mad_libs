@@ -1,8 +1,9 @@
 angular.module('madLibsApp', [])
 .controller('myCtrl', ['$scope', function($scope) {
+  $scope.gender;
   $scope.words = 
     {
-      "femaleName": "",
+      "name": "",
       "dirtyTask": "",
       "obnoxiousCelebrity": "",
       "jobTitle": "",
