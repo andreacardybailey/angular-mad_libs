@@ -33,7 +33,7 @@ angular.module('madLibsApp', ['ngMessages'])
  
     $scope.reset = function() {
       angular.copy($scope.origWords, $scope.words);
-       angular.copy($scope.origGenders, $scope.genders);
+      angular.copy($scope.origGenders, $scope.genders);
       $scope.wordsForm.$setPristine();
       $scope.validForm = false;
       $scope.gender.which = null;
