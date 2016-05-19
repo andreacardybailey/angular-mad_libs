@@ -5,6 +5,7 @@
     <title>Mad Libs</title>
     <link rel="stylesheet" href="styles/madLibs.css">
     <script data-require="angular.js@1.3.10" data-semver="1.3.10" src="https://code.angularjs.org/1.3.10/angular.js"></script>
+    <script src="https://code.angularjs.org/1.3.0/angular-messages.min.js"></script>
     <script src="scripts/madLibs.js"></script>
   </head>
   <body ng-app="madLibsApp">
@@ -17,57 +18,85 @@
       </div>
     </header>
     <div ng-controller="myCtrl">
-      <section class="words">
-        <form action="" method="post">
-          <div ng-hide="gender">
+      <section class="words" ng-hide="validForm">
+        <form name="wordsForm" novalidate ng-submit="submit()" class="clearfix">
+          <div ng-hide="gender.which">
             <h2>First, choose a gender:</h2>
-            <select name="gender" id="gender" ng-model="gender">
-              <option value="">---</option>
-              <option value="male">male</option>
-              <option value="female">female</option>
+            <select name="gender" id="gender" ng-model="gender" ng-options="gender.which for gender in genders track by gender.which">
+              <option value="" label="---"></option>
             </select>
           </div>
-          <div ng-hide="!gender">
-          <h2>Next, provide the following words:</h2>
+          <div ng-hide="!gender.which">
+            <h2>Next, provide the following words:</h2>
             <ul class="clearfix">
               <li>
-                <input type="text" ng-model="words.name" placeholder="name" name="name" class="name">
+                <input type="text" required ng-model="words.name" placeholder="name" name="name" class="name">
+                <div ng-if="wordsForm.$submitted" ng-messages="wordsForm.name.$error">
+                    <span class="error" ng-message="required">Field is required!</span>
+                </div>
               </li>
               <li>
-                <input type="text" ng-model="words.dirtyTask" placeholder="dirty task" name="dirty_task" class="dirty_task">
+                <input type="text" required ng-model="words.dirtyTask" placeholder="dirty task" name="dirty_task" class="dirty_task">
+                <div ng-if="wordsForm.$submitted" ng-messages="wordsForm.dirty_task.$error">
+                    <span class="error" ng-message="required">Field is required!</span>
+                </div>
               </li>
               <li>
-                <input type="text" ng-model="words.obnoxiousCelebrity" placeholder="obnoxious celebrity" name="obnoxious_celebrity" class="obnoxious_celebrity">
+                <input type="text" required ng-model="words.obnoxiousCelebrity" placeholder="obnoxious celebrity" name="obnoxious_celebrity" class="obnoxious_celebrity">
+                <div ng-if="wordsForm.$submitted" ng-messages="wordsForm.obnoxious_celebrity.$error">
+                    <span class="error" ng-message="required">Field is required!</span>
+                </div>
               </li>
               <li>
-                <input type="text" ng-model="words.jobTitle" placeholder="job title" name="job_title" class="job_title">
+                <input type="text" required ng-model="words.jobTitle" placeholder="job title" name="job_title" class="job_title">
+                <div ng-if="wordsForm.$submitted" ng-messages="wordsForm.job_title.$error">
+                    <span class="error" ng-message="required">Field is required!</span>
+                </div>
               </li>
               <li>
-                <input type="text" ng-model="words.celebrity" placeholder="celebrity" name="celebrity" class="celebrity">
+                <input type="text" required ng-model="words.celebrity" placeholder="celebrity" name="celebrity" class="celebrity">
+                <div ng-if="wordsForm.$submitted" ng-messages="wordsForm.celebrity.$error">
+                    <span class="error" ng-message="required">Field is required!</span>
+                </div>
               </li>
               <li>
-                <input type="text" ng-model="words.hugeNumber" placeholder="huge number" name="huge_number" class="huge_number">
+                <input type="number" required ng-model="words.hugeNumber" placeholder="huge number" name="huge_number" class="huge_number">
+                <div ng-if="wordsForm.$submitted" ng-messages="wordsForm.huge_number.$error">
+                    <span class="error" ng-message="required">Field is required!</span>
+                    <span class="error" ng-message="number">You must supply only numeric vales!</span>
+                </div>
               </li>
               <li>
-                <input type="text" ng-model="words.tediousTask" placeholder="tedious task" name="tedious_task" class="tedious_task">
+                <input type="text" required ng-model="words.tediousTask" placeholder="tedious task" name="tedious_task" class="tedious_task">
+                <div ng-if="wordsForm.$submitted" ng-messages="wordsForm.tedious_task.$error">
+                    <span class="error" ng-message="required">Field is required!</span>
+                </div>
               </li>
               <li>
-                <input type="text" ng-model="words.uselessSkill" placeholder="useless skill" name="useless_skill" class="useless_skill">
+                <input type="text" required ng-model="words.uselessSkill" placeholder="useless skill" name="useless_skill" class="useless_skill">
+                <div ng-if="wordsForm.$submitted" ng-messages="wordsForm.useless_skill.$error">
+                    <span class="error" ng-message="required">Field is required!</span>
+                </div>
               </li>
               <li>
-                <input type="text" ng-model="words.adjective" placeholder="adjective" name="adjective" class="adjective">
+                <input type="text" required ng-model="words.adjective" placeholder="adjective" name="adjective" class="adjective">
+                <div ng-if="wordsForm.$submitted" ng-messages="wordsForm.adjective.$error">
+                    <span class="error" ng-message="required">Field is required!</span>
+                </div>
               </li>
             </ul>
+            <input type="submit" value="Generate my Mad Lib">
           </div>
         </form>
       </section>
-      <section class="result" ng-hide="!gender">
+      <section class="result clearfix" ng-show="validForm">
         <p>
-          <em>{{words.name}}</em> was a <em>{{words.jobTitle}}</em> who loved technology. Although {{gender === "female" ? "she" : "he"}} loved parts of {{gender === "female" ? "her" : "his"}} job, {{gender === "female" ? "she" : "he"}} absolutely hated <em>{{words.tediousTask}}</em> and <em>{{words.dirtyTask}}</em>. So, <em>{{words.name}}</em> met with {{gender === "female" ? "her" : "his"}} life mentor <em>{{words.celebrity}}</em> who told {{gender === "female" ? "her" : "him"}} to learn how to <em>{{words.uselessSkill}}</em> with Thinkful. Thinkful didn't offer a course on <em>{{words.uselessSkill}}</em> so {{gender === "female" ? "she" : "he"}} studied programming instead.
+          <em>{{words.name}}</em> was a <em>{{words.jobTitle}}</em> who loved technology. Although {{gender.which === "female" ? "she" : "he"}} loved parts of {{gender.which === "female" ? "her" : "his"}} job, {{gender.which === "female" ? "she" : "he"}} absolutely hated <em>{{words.tediousTask}}</em> and <em>{{words.dirtyTask}}</em>. So, <em>{{words.name}}</em> met with {{gender.which === "female" ? "her" : "his"}} life mentor <em>{{words.celebrity}}</em> who told {{gender.which === "female" ? "her" : "him"}} to learn how to <em>{{words.uselessSkill}}</em> with Thinkful. Thinkful didn't offer a course on <em>{{words.uselessSkill}}</em> so {{gender.which === "female" ? "she" : "he"}} studied programming instead.
         </p> 
         <p>
-          What a great decision! With {{gender === "female" ? "her" : "his"}} new skills, <em>{{words.fname}}</em> built a(n) <em>{{words.adjective}}</em> robot named <em>{{words.obnoxiousCelebrity}}</em> that not only loved <em>{{words.dirtyTask}}</em> but did it <em>{{words.hugeNumber}}</em> times faster.
+          What a great decision! With {{gender.which === "female" ? "her" : "his"}} new skills, <em>{{words.name}}</em> built a(n) <em>{{words.adjective}}</em> robot named <em>{{words.obnoxiousCelebrity}}</em> that not only loved <em>{{words.dirtyTask}}</em> but did it <em>{{words.hugeNumber}}</em> times faster.
         </p>
+        <button type="button" ng-click="reset()">Start Over</button>
       </section>
     </div>
   </body>

@@ -19,7 +19,9 @@ h2 {
 }
 ul {
   list-style-type: none;
-  margin: 1rem 0;
+  margin: 1rem 0 1.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #000;
 }
 ul li {
   float: left;
@@ -30,7 +32,10 @@ p {
   margin: 1.5rem 0;
   line-height: 1.5rem;
 }
-select, input {
+form {
+
+}
+select, input, button {
   padding: 4px;
   margin: .5rem 0;
   font-size: .85rem;
@@ -38,6 +43,11 @@ select, input {
 }
 input {
   width: 80%;
+}
+input[type=submit], button {
+  width: 20%;
+  float: right;
+  background-color: #e6e6e6;
 }
 header {
   border-bottom: 1px solid #000;
