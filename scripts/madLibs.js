@@ -1,41 +1,51 @@
-angular.module('madLibsApp', ['ngMessages'])
-.controller('myCtrl', ['$scope', function($scope) {
-  $scope.genders = [
-    {
-      which: "male"
+var madLibsModule = angular.module('madLibsApp', ['ngMessages']);
+madLibsModule.factory('genderize', function() {
+  return {
+    male: {
+      he: 'he',
+      his: 'his',
+      him: 'him'
     },
-    {
-      which: "female"
+    female: {
+      he: 'she',
+      his: 'her',
+      him: 'her'
     }
-  ]
+  }
+});
 
-  $scope.words = 
-    {
-      "name": "",
-      "dirtyTask": "",
-      "obnoxiousCelebrity": "",
-      "jobTitle": "",
-      "celebrity": "",
-      "hugeNumber": "",
-      "tediousTask": "",
-      "uselessSkill": "",
-      "adjective": ""
-    };
+madLibsModule.controller('myCtrl', function($scope, genderize) {
 
-    $scope.origWords = angular.copy($scope.words);
-    $scope.origGenders = angular.copy($scope.genders);
+  $scope.genderize = genderize;
 
-    $scope.submit = function(){
-      if( $scope.wordsForm.$valid ) {
-        this.validForm = true;
-      }
+  $scope.genders = {
+    type: "select", 
+    name: "genders",
+    value: "---",
+    values: ["---", "male", "female"],
+    defined: false
+  };
+
+  $scope.genderChange = function() {
+    if($scope.genders.value != "---") {
+      $scope.genders.defined = true;
     }
- 
-    $scope.reset = function() {
-      angular.copy($scope.origWords, $scope.words);
-      angular.copy($scope.origGenders, $scope.genders);
-      $scope.wordsForm.$setPristine();
-      $scope.validForm = false;
-      $scope.gender.which = null;
-    };
-}]);
+  }
+
+  $scope.submit = function(){
+    if( $scope.wordsForm.$valid ) {
+      this.validForm = true;
+    }
+  }
+
+  var original = $scope.user;
+  var origGenders = angular.copy($scope.genders);
+
+  $scope.reset = function() {
+    angular.copy(origGenders, $scope.genders);
+    $scope.user = angular.copy(original)
+    $scope.wordsForm.$setPristine();
+    $scope.validForm = false;
+  };
+
+});

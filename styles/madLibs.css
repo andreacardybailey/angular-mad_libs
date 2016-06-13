@@ -84,6 +84,13 @@ header {
   min-width: 20px;
   display: inline-block;
 }
+.error { 
+  color: red; 
+}
+.ng-submitted .ng-invalid { 
+  border: 1px solid red; 
+}
+
 
 
 .clearfix:after {
