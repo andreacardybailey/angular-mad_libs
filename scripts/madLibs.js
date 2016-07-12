@@ -15,7 +15,8 @@ madLibsModule.factory('genderize', function() {
 });
 
 madLibsModule.controller('myCtrl', function($scope, genderize) {
-
+  $scope.animateInput = "animateShow";
+  $scope.animateInputFields = "animateShow";
   $scope.genderize = genderize;
 
   $scope.genders = {
@@ -35,6 +36,8 @@ madLibsModule.controller('myCtrl', function($scope, genderize) {
   $scope.submit = function(){
     if( $scope.wordsForm.$valid ) {
       this.validForm = true;
+      $scope.animateInput = "animateHide";
+      $scope.animateResult = "animateShow";
     }
   }
 
@@ -46,6 +49,9 @@ madLibsModule.controller('myCtrl', function($scope, genderize) {
     $scope.user = angular.copy(original)
     $scope.wordsForm.$setPristine();
     $scope.validForm = false;
+    $scope.animateInputFields = "";
+    $scope.animateInput = "animateShow";
+    $scope.animateResult = "";
   };
 
 });

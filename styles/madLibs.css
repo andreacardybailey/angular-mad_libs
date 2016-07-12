@@ -1,3 +1,18 @@
+.clearfix:after {
+   visibility: hidden;
+   display: block;
+   font-size: 0;
+   content: " ";
+   clear: both;
+   height: 0;
+ }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
+
 * {
   margin: 0;
   padding: 0;
@@ -5,6 +20,7 @@
 body {
   font-family: Arial, sans-serif;
   width: 80%;
+  min-width: 37.5rem;
   border: 1px solid #000;
   margin: 2rem auto 0 auto;
 }
@@ -31,9 +47,6 @@ ul li {
 p {
   margin: 1.5rem 0;
   line-height: 1.5rem;
-}
-form {
-
 }
 select, input, button {
   padding: 4px;
@@ -63,7 +76,7 @@ header {
   text-align: center;
 }
 .header-left img {
-  width: 50%;
+  height:100%;
 }
 .header-right {
   background: url('../images/ng-mad-libs-logo.png') no-repeat center 1rem;
@@ -72,15 +85,21 @@ header {
   font-size: 2rem;
   text-align: center;
 }
+.container {
+  position: relative;
+  min-height:16rem;
+}
 .words {
   padding: 2rem 4.5rem;
-  border-bottom: 1px solid #000;
 }
 .result {
+  position: absolute;
+  top:0;
+  display:none;
+  opacity:0;
   padding: 2rem 4.5rem;
 }
 .result em {
-  border-bottom: 1px solid #000;
   min-width: 20px;
   display: inline-block;
 }
@@ -92,17 +111,115 @@ header {
 }
 
 
+/*fade out words, fade in result*/
+.animateShow {
+  display:block;
+  /* The animation SETTINGS */
+  /*Safari / Chrome compatibility*/
+  -webkit-animation: fadeIn 2s;
+  /*Firefox compatibility*/
+  -moz-animation: fadeIn 2s;
+  /*Internet Explorer compatibility*/
+  -ms-animation: fadeIn 2s;
+  /*Opera compatibility*/
+  -o-animation: fadeIn 2s;
+  animation: fadeIn 2s;
+  animation-fill-mode: forwards;
+}
+@-webkit-keyframes fadeIn {
+  0% {
+      opacity:0;
+  }
+  100% {
+      opacity:1;
+  }
+}
+@-moz-keyframes fadeIn {
+  0% {
+      opacity:0;
+  }
+  100% {
+      opacity:1;
+  }
+}
+@-ms-keyframes fadeIn{
+  0% {
+      opacity:0;
+  }
+  100% {
+      opacity:1;
+  }
+}
+@-o-keyframes fadeIn{
+  0% {
+      opacity:0;
+  }
+  100% {
+      opacity:1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+      opacity:0;
+  }
+  100% {
+      opacity:1;
+  }
+}
 
-.clearfix:after {
-   visibility: hidden;
-   display: block;
-   font-size: 0;
-   content: " ";
-   clear: both;
-   height: 0;
- }
-.clearfix { display: inline-block; }
-/* start commented backslash hack \*/
-* html .clearfix { height: 1%; }
-.clearfix { display: block; }
-/* close commented backslash hack */
+
+
+
+.animateHide {
+  /* The animation SETTINGS */
+  /*Safari / Chrome compatibility*/
+  -webkit-animation: fadeOut 2s;
+  /*Firefox compatibility*/
+  -moz-animation: fadeOut 2s;
+  /*Internet Explorer compatibility*/
+  -ms-animation: fadeOut 2s;
+  /*Opera compatibility*/
+  -o-animation: fadeOut 2s;
+  animation: fadeOut 2s;
+  animation-fill-mode: forwards; /*forwards, backwards, both, none*/
+}
+@-webkit-keyframes fadeOut {
+  0% {
+        opacity:1;
+  }
+  100% {
+      opacity:0;
+  }
+}
+@-moz-keyframes fadeOut {
+  0% {
+        opacity:1;
+  }
+  100% {
+      opacity:0;
+  }
+}
+@-ms-keyframes fadeOut{
+  0% {
+        opacity:1;
+  }
+  100% {
+      opacity:0;
+  }
+}
+@-o-keyframes fadeOut{
+  0% {
+        opacity:1;
+  }
+  100% {
+      opacity:0;
+  }
+}
+@keyframes fadeOut {
+  0% {
+        opacity:1;
+  }
+  100% {
+      opacity:0;
+  }
+}
