@@ -87,7 +87,7 @@ header {
 }
 .container {
   position: relative;
-  min-height:16rem;
+  min-height:18rem;
 }
 .words {
   padding: 2rem 4.5rem;
