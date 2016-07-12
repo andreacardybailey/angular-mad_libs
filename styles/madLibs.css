@@ -42,7 +42,6 @@ ul {
   padding-bottom: 2rem;
   border-bottom: 1px solid #000;
 }
-
 @media (min-width: 700px) {
   ul li {
     float: left;
@@ -114,7 +113,6 @@ header {
 }
 .container {
   position: relative;
-  /*min-height:18rem;*/
 }
 .words {
   padding: 2rem;
