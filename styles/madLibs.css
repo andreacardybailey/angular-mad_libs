@@ -19,10 +19,13 @@
 }
 body {
   font-family: Arial, sans-serif;
-  width: 80%;
-  min-width: 37.5rem;
-  border: 1px solid #000;
   margin: 2rem auto 0 auto;
+}
+@media (min-width: 700px) {
+  body {
+    width: 80%;
+    border: 1px solid #000;
+  }
 }
 h1 {
   font-size: 2.5rem;
@@ -39,10 +42,13 @@ ul {
   padding-bottom: 2rem;
   border-bottom: 1px solid #000;
 }
-ul li {
-  float: left;
-  width: 33%;
-  text-align: center;
+
+@media (min-width: 700px) {
+  ul li {
+    float: left;
+    width: 33%;
+    text-align: center;
+  }
 }
 p {
   margin: 1.5rem 0;
@@ -55,12 +61,22 @@ select, input, button {
   border: 1px solid #000;
 }
 input {
-  width: 80%;
+  width: 100%;
+}
+@media (min-width: 700px) {
+  input {
+    width: 80%;
+  }
 }
 input[type=submit], button {
-  width: 20%;
-  float: right;
+  width: 100%;
   background-color: #e6e6e6;
+}
+@media (min-width: 700px) {
+  input[type=submit], button {
+    width:30%;
+    float: right;
+  }
 }
 header {
   border-bottom: 1px solid #000;
@@ -70,34 +86,55 @@ header {
   float: left;
   height: 8rem;
 }
-.header-left{
-  width:24%;
-  border-right: 1px solid #000;
-  text-align: center;
+.header-left {
+  display: none;
+}
+@media (min-width: 700px) {
+  .header-left {
+    display: block;
+    width:24%;
+    border-right: 1px solid #000;
+    text-align: center;
+  }
 }
 .header-left img {
   height:100%;
 }
 .header-right {
+  width: 100%;
   background: url('../images/ng-mad-libs-logo.png') no-repeat center 1rem;
   background-size: 10.75rem 2.68rem;
-  width:75%;
   font-size: 2rem;
   text-align: center;
 }
+@media (min-width: 700px) {
+  .header-right {
+    width: 75%;
+  }
+}
 .container {
   position: relative;
-  min-height:18rem;
+  /*min-height:18rem;*/
 }
 .words {
-  padding: 2rem 4.5rem;
+  padding: 2rem;
+}
+@media (min-width: 700px) {
+  .words {
+    padding: 2rem 4.5rem;
+  }
 }
 .result {
-  position: absolute;
+  position: relative;
   top:0;
   display:none;
   opacity:0;
-  padding: 2rem 4.5rem;
+  padding: 2rem;
+}
+@media (min-width: 700px) {
+  .result {
+    padding: 2rem 4.5rem;
+  }
 }
 .result em {
   min-width: 20px;
@@ -109,9 +146,6 @@ header {
 .ng-submitted .ng-invalid { 
   border: 1px solid red; 
 }
-
-
-/*fade out words, fade in result*/
 .animateShow {
   display:block;
   /* The animation SETTINGS */
@@ -166,10 +200,6 @@ header {
       opacity:1;
   }
 }
-
-
-
-
 .animateHide {
   /* The animation SETTINGS */
   /*Safari / Chrome compatibility*/
