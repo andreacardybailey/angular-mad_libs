@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/madLibs.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    <script type="text/javascript" src="https://code.angularjs.org/1.5.5/angular-animate.js"></script>
     <script src="scripts/madLibs.js"></script>
   </head>
   <body>
@@ -19,19 +20,19 @@
       </div>
     </header>
     <div class="container">
-      <section class="words {{animateInput}}" ng-hide="validForm">
+      <section class="words content" ng-hide="validForm">
         <form name="wordsForm" novalidate ng-submit="submit()" class="clearfix">
           <div ng-hide="genders.defined">
             <h2>First, choose a gender:</h2>
             <select 
-              ng-model="genders.value" 
+              ng-model="genders.value"
               ng-options="gender for gender in genders.values"
               ng-change="genderChange()"
             >
             </select>
 
           </div>
-          <div ng-show="genders.defined" class="{{animateInputFields}}">
+          <div ng-show="genders.defined">
             <h2>Next, provide the following words:</h2>
             <ul class="clearfix">
               <li>
@@ -70,7 +71,7 @@
           </div>
         </form>
       </section>
-      <section class="result clearfix {{animateResult}}">
+      <section class="result content clearfix" ng-show="validForm">
         <p>
           <em>{{user.name}}</em> was a <em>{{user.jobTitle}}</em> who loved technology. Although {{genderize[genders.value].he}} loved parts of {{genderize[genders.value].his}} job, {{genderize[genders.value].he}} absolutely hated <em>{{user.tediousTask}}</em> and <em>{{user.dirtyTask}}</em>. So, <em>{{user.name}}</em> met with {{genderize[genders.value].his}} life mentor <em>{{user.celebrity}}</em> who told {{genderize[genders.value].him}} to learn how to <em>{{user.uselessSkill}}</em> with Thinkful. Thinkful didn't offer a course on <em>{{user.uselessSkill}}</em> so {{genderize[genders.value].he}} studied programming instead.
         </p>

@@ -24,7 +24,6 @@ body {
 @media (min-width: 700px) {
   body {
     width: 80%;
-    border: 1px solid #000;
   }
 }
 h1 {
@@ -59,6 +58,24 @@ select, input, button {
   font-size: .85rem;
   border: 1px solid #000;
 }
+
+.content {
+  transition: all linear 0.5s;
+}
+
+.ng-hide-add {
+  opacity:1;
+} 
+.ng-hide-add-active {
+  opacity:0;
+}
+.ng-hide-remove {
+  opacity:0;
+} 
+.ng-hide-remove-active{
+  opacity: 1;
+}
+
 input {
   width: 100%;
 }
@@ -73,12 +90,17 @@ input[type=submit], button {
 }
 @media (min-width: 700px) {
   input[type=submit], button {
-    width:30%;
+    width:35%;
     float: right;
   }
 }
 header {
   border-bottom: 1px solid #000;
+}
+@media (min-width: 700px) {
+  header {
+    border: 1px solid #000;
+  }
 }
 .header-left, .header-right{
   padding: 1rem 0;
@@ -120,134 +142,34 @@ header {
 @media (min-width: 700px) {
   .words {
     padding: 2rem 4.5rem;
+    border-right: 1px solid #000;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
   }
 }
 .result {
-  position: relative;
-  top:0;
-  display:none;
-  opacity:0;
+  position: absolute;
+  top:0;  
   padding: 2rem;
 }
 @media (min-width: 700px) {
   .result {
     padding: 2rem 4.5rem;
+    border-right: 1px solid #000;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
   }
 }
 .result em {
   min-width: 20px;
   display: inline-block;
 }
+.result.show {
+  /*display:block;*/
+}
 .error { 
   color: red; 
 }
 .ng-submitted .ng-invalid { 
   border: 1px solid red; 
-}
-.animateShow {
-  display:block;
-  /* The animation SETTINGS */
-  /*Safari / Chrome compatibility*/
-  -webkit-animation: fadeIn 2s;
-  /*Firefox compatibility*/
-  -moz-animation: fadeIn 2s;
-  /*Internet Explorer compatibility*/
-  -ms-animation: fadeIn 2s;
-  /*Opera compatibility*/
-  -o-animation: fadeIn 2s;
-  animation: fadeIn 2s;
-  animation-fill-mode: forwards;
-}
-@-webkit-keyframes fadeIn {
-  0% {
-      opacity:0;
-  }
-  100% {
-      opacity:1;
-  }
-}
-@-moz-keyframes fadeIn {
-  0% {
-      opacity:0;
-  }
-  100% {
-      opacity:1;
-  }
-}
-@-ms-keyframes fadeIn{
-  0% {
-      opacity:0;
-  }
-  100% {
-      opacity:1;
-  }
-}
-@-o-keyframes fadeIn{
-  0% {
-      opacity:0;
-  }
-  100% {
-      opacity:1;
-  }
-}
-@keyframes fadeIn {
-  0% {
-      opacity:0;
-  }
-  100% {
-      opacity:1;
-  }
-}
-.animateHide {
-  /* The animation SETTINGS */
-  /*Safari / Chrome compatibility*/
-  -webkit-animation: fadeOut 2s;
-  /*Firefox compatibility*/
-  -moz-animation: fadeOut 2s;
-  /*Internet Explorer compatibility*/
-  -ms-animation: fadeOut 2s;
-  /*Opera compatibility*/
-  -o-animation: fadeOut 2s;
-  animation: fadeOut 2s;
-  animation-fill-mode: forwards; /*forwards, backwards, both, none*/
-}
-@-webkit-keyframes fadeOut {
-  0% {
-        opacity:1;
-  }
-  100% {
-      opacity:0;
-  }
-}
-@-moz-keyframes fadeOut {
-  0% {
-        opacity:1;
-  }
-  100% {
-      opacity:0;
-  }
-}
-@-ms-keyframes fadeOut{
-  0% {
-        opacity:1;
-  }
-  100% {
-      opacity:0;
-  }
-}
-@-o-keyframes fadeOut{
-  0% {
-        opacity:1;
-  }
-  100% {
-      opacity:0;
-  }
-}
-@keyframes fadeOut {
-  0% {
-        opacity:1;
-  }
-  100% {
-      opacity:0;
-  }
 }
